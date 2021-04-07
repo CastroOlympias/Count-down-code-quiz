@@ -13,7 +13,7 @@
 }
 
 .score-time h3 {
-    font-size: 30px;
+    font-size: 26px;
 }
 
 h1 {
@@ -45,4 +45,14 @@ h1 {
 .quiz button {
     margin: 15px;
     background: purple;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+button {
+    width: 200px;
 }
