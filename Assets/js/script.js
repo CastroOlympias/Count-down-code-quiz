@@ -2,7 +2,9 @@
 // Create a function to lsiten to the pressed button, and begin the count down timer
 
 var timerEl = document.getElementById('time-left');
-//var startBtn = document.getElementById('start-quiz');
+var scoreEl = document.getElementById('high-score');
+var startBtn = document.getElementById('start-quiz');
+startBtn.setAttribute('style', 'font-size: 30px;','box-align: center;');
 var score = 0;
 
 var body = document.body;
@@ -26,11 +28,11 @@ var startbtnEl = document.createElement('button');
 startbtnEl.id = 'start-quiz';
 startbtnEl.textContent = 'Start Quiz now?';
 startbtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
-body.appendChild(startbtnEl);
+//body.appendChild(startbtnEl);
 
 
 // Start timer countdown
-var timeLeft = 10;
+var timeLeft = 60;
 var startQuiz = function(event) {
     event.preventDefault();
 
@@ -60,24 +62,17 @@ var startQuiz = function(event) {
 
 };
 startbtnEl.onclick = startQuiz;
-
+startBtn.onclick = startQuiz;
 
 // After pressing start quiz button, begin the first round of muliple choice questions
 
 var listBrand = [
-    { q: 'What color is the sky?.', choices: ["red", "blue", "brown", "pruple", "orange"], a: 'blue' },
-    { q: 'What color clear?.', choices: ["red", "blue", "brown", "pruple", "orange"], a: 'blue' },
-    { q: 'What color is the sky?.', choices: ["red", "blue", "brown", "pruple", "orange"], a: 'blue' },
-    { q: 'What color is the sky?.', choices: ["red", "blue", "brown", "pruple", "orange"], a: 'blue' },
-
-
-
-
-    // { q: 'There are 365 days in a year.', a: 't' },
-    // { q: 'There are 42 ounces in a pound.', a: 'f' },
-    // { q: 'The Declaration of Independence was created in 1745.', a: 'f' },
-    // { q: 'Bananas are vegetables.', a: 'f' },
-    // { q: 'Is water wet?', a: 't' }
+    { q: 'What color is the sky?.', choices: ["Red", "Blue", "Brown", "Purple", "Orange"], a: 'Blue' },
+    { q: 'What is the most dangerous animal in the world?.', choices: ["Black Cats", "Blue Dogs", "Giraffes", "Lion", "Tiny Great White Shark"], a: 'Blue Dogs' },
+    { q: 'What is your Favorite number?.', choices: ["1", "0", "10", "7", "5"], a: '7' },
+    { q: 'What is your favorite Mel Gibson movie?', choices: ["Brave Heart", "Lethal Weapon", "Maverick", "Forever Young", "Signs"], a: 'Brave Heart' },
+    { q: 'If A = 1 & B = 2 and Y = 25 & Z = 26, then what number value is Cat?.', choices: ["16", "20", "24", "28", "32"], a: '24' },
+    { q: 'How much wood could a wood chuck, chuck, if a wood chuck could chuck wood?', choices: ["16 cords", "24 cords", "32 cords", "40 cords", "48 cords"], a: '48 cords' },
   ]; 
   var index = 0;
 //the array
@@ -97,98 +92,23 @@ var printBtnEl = function() {
        //btn.appendChild(t);
        questionsDiv.appendChild(btn);
     })
+
+
     startbtnEl.remove();
+    startBtn.remove();
 }
 
 var checkAnswer = function() {
     if (this.value === listBrand[index].a) {
         alert("this is correct")
+        score ++;
+        scoreEl.textContent = ' Your score is ' + score;
     } else {
-        alert("youre are very wrong")
-        timeLeft -= 2
+        //alert("youre are very wrong")
+        timeLeft -= 15
     }
     index ++;
     printBtnEl()
 }
 
-
-
-    // for (var i = 0; i < listBrand.choices.length; i++) {
-       // remember index ++ to get new set of questions/answers
-    //}
-    
-    
-    //printBtnTwoEl();
-
-
-// // after answering first question begin second quation
-
-// var listBrandTwo =['Porsche','Dodge','Truck','Car','wag'];   
-// //the array
-// var printBtnTwoEl = function() {
-    
-    
-//     for (var i = 0; i < listBrandTwo.length; i++) {
-//        var btnTwo = document.createElement("button");
-//         var t = document.createTextNode(listBrandTwo[i]);
-//        btnTwo.appendChild(t);
-//        document.body.appendChild(btnTwo);
-//     }
-// }
-
-
-
-
-
-
-
-// var roundOne = function() {
-//     //window.location.href = "./RoundOne.html";
-    
-//     var roundOnebtnEl = document.createElement('button');
-//     roundOnebtnEl.id = 'firstQuestion';
-//     roundOnebtnEl.textContent = 'Round One?';
-//     roundOnebtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
-//     body.appendChild(roundOnebtnEl)
-    
-//     roundTwo()
-
-// };
-
-
-// // body.appendChild(roundTwobtnEl);
-
-// var roundTwo = function() {
-   
-     
-//     // var roundTwobtnEl = document.createElement('button');
-//     // roundTwobtnEl.id = 'secondQuestion';
-//     // roundTwobtnEl.textContent = 'Round two?';
-//     // roundTwobtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
-    
-//     body.appendChild(roundTwobtnEl);
-    
-// }
-
-
-
-// if you chose the right answer, then add a point to your score but if you should the wrong answer then dcrease subtract seconds from the timer.
-
-
-
-
-
-
-// if you chose the right answer, then add a point to your score but if you should the wrong answer then dcrease subtract seconds from the timer.
-
-
-// var listBrand =['LEXUS','AUDI','MAYBACK','FERRARI','TOYOTA'];   
-// //the array
-// var printBtn = function() {
-//     for (var i = 0; i < listBrand.length; i++) {
-//        var btn = document.createElement("button");
-//        var t = document.createTextNode(listBrand[i]);
-//        btn.appendChild(t);
-//        document.body.appendChild(btn);
-//     }
-// }
+console.log(score)
