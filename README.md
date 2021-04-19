@@ -43,3 +43,4 @@ You are required to submit the following for review:
 
 Link to app: https://castroolympias.github.io/Count-down-code-quiz/
 Link to repo: https://github.com/CastroOlympias/Count-down-code-quiz
+link to screenshot: https://raw.githubusercontent.com/CastroOlympias/Count-down-code-quiz/main/screenshot.png
