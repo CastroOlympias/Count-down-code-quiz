@@ -9,6 +9,8 @@ var score = 0;
 
 var body = document.body;
 
+var questionIdCounter = 0
+
 // html insertion of rules for challenge
 
 var body = document.body;
@@ -32,7 +34,7 @@ startbtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
 
 
 // Start timer countdown
-var timeLeft = 60;
+var timeLeft = 15;
 var startQuiz = function(event) {
     event.preventDefault();
 
@@ -73,34 +75,43 @@ var listBrand = [
     { q: 'What is your favorite Mel Gibson movie?', choices: ["Brave Heart", "Lethal Weapon", "Maverick", "Forever Young", "Signs"], a: 'Brave Heart' },
     { q: 'If A = 1 & B = 2 and Y = 25 & Z = 26, then what number value is Cat?.', choices: ["16", "20", "24", "28", "32"], a: '24' },
     { q: 'How much wood could a wood chuck, chuck, if a wood chuck could chuck wood?', choices: ["16 cords", "24 cords", "32 cords", "40 cords", "48 cords"], a: '48 cords' },
+    
   ]; 
   var index = 0;
 //the array
-var printBtnEl = function() {
+
+questionIdCounter++;
+
+var printBtnEl = function(questionIdCounter) {
     var currentQuestion = listBrand[index]
     var h2El = document.createElement("h2")
     h2El.textContent = currentQuestion.q
     var questionsDiv = document.querySelector(".questions")
     questionsDiv.innerHTML = ""
     questionsDiv.appendChild(h2El)
-        currentQuestion.choices.forEach(function(choice,i){
-        var btn = document.createElement("button");
-        btn.setAttribute("value", choice)
-        btn.onclick = checkAnswer
-       //var t = document.createElement("button");
-       btn.textContent = choice
-       //btn.appendChild(t);
-       questionsDiv.appendChild(btn);
+    
+    currentQuestion.choices.forEach(function(choice,i){
+    var btn = document.createElement("button");
+    btn.setAttribute("value", choice)
+    btn.setAttribute("data-answer-id", questionIdCounter)
+    btn.onclick = checkAnswer
+    //var t = document.createElement("button");
+    btn.textContent = choice
+    //btn.appendChild(t);
+    questionsDiv.appendChild(btn);
     })
 
-
+    // if (questionsDiv) {
+    //     alert("Game Over");
+    // }
     startbtnEl.remove();
     startBtn.remove();
+    
 }
 
 var checkAnswer = function() {
     if (this.value === listBrand[index].a) {
-        alert("this is correct")
+        //alert("this is correct")
         score ++;
         scoreEl.textContent = ' Your score is ' + score;
     } else {
@@ -109,6 +120,15 @@ var checkAnswer = function() {
     }
     index ++;
     printBtnEl()
+    console.log(score);
 }
 
-console.log(score)
+
+
+var endGame = function() {
+
+}
+
+var saveScore = function() {
+
+}
