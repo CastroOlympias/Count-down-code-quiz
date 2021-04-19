@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
 }
-
+/* Styles for score and time */
 .score-time  {
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +29,7 @@ h1 {
 }
 
 
-
+/* styles for question and button */
 .questions  {
     display: flex;
     flex-direction: column;

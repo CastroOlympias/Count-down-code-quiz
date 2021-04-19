@@ -1,6 +1,3 @@
-// Presented with option to start the quiz, I press the button to begin the timer.
-// Create a function to lsiten to the pressed button, and begin the count down timer
-
 var timerEl = document.getElementById('time-left');
 var scoreEl = document.getElementById('high-score');
 var startBtn = document.getElementById('start-quiz');
@@ -101,9 +98,7 @@ var printBtnEl = function(questionIdCounter) {
     questionsDiv.appendChild(btn);
     })
 
-    // if (questionsDiv) {
-    //     alert("Game Over");
-    // }
+  
     startbtnEl.remove();
     startBtn.remove();
     
