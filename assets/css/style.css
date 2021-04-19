@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+/* Styles for score and time */
+.score-time  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.score-time h3 {
+    font-size: 26px;
+}
+
+h1 {
+    color: blue;
+}
+
+.quiz {
+    background: green;
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+    margin-top: 200px;
+}
+
+
+/* styles for question and button */
+.questions  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    max-height: 300px;
+    background: yellow;
+}
+
+.quiz h1 {
+    margin: 25px;
+}
+
+.quiz p {
+    margin: 25px;
+}
+
+.quiz button {
+    margin: 15px;
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+button {
+    width: 200px;
+}
