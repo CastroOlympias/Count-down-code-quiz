@@ -19,11 +19,19 @@
 h1 {
     color: blue;
 }
+#Hello-World {
+    font-style: bold;
+    font-size: 60px;;
+}
+
+#game-rules {
+    font-size: 40px;
+}
 
 #quiz {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
     background: green;
     max-width: 60%;
     text-align: center;

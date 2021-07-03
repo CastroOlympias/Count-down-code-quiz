@@ -11,17 +11,20 @@ var questionIdCounter = 0
 
 // html insertion of rules for challenge
 
+const welcomeDiv = document.getElementById('welcome')
 var body = document.body;
-var welcome = document.createElement('h1');
-var gameRules = document.createElement('h2');
-welcome.textContent = 'Hello World!';
-welcome.setAttribute('style', 'margin:auto; width:50%; text-align:center;');
-quiz.appendChild(welcome);
+var welcomeMsg = document.createElement('h1');
+var gameRulesMsg = document.createElement('h2');
+welcomeMsg.textContent = 'Hello World!';
+welcomeMsg.id='Hello-World';
+gameRulesMsg.id='game-rules'
+// welcomeDiv.setAttribute('style', 'margin:auto; width:50%; text-align:center;');
+welcomeDiv.appendChild(welcomeMsg);
 
-gameRules.textContent =
+gameRulesMsg.textContent =
   'Answer as many questions as possible while time still remains. Any wrong answer will decrease your time by 15 seconds. Good Luck!';
-  gameRules.setAttribute('style', 'margin:auto; width:60%; text-align:center;');
-quiz.appendChild(gameRules);
+  gameRulesMsg.setAttribute('style', 'margin:auto; width:60%; text-align:center;');
+  welcome.appendChild(gameRulesMsg);
 
 var startQuiz = document.create
 
@@ -30,7 +33,7 @@ var startbtnEl = document.createElement('button');
 startbtnEl.id = 'start-quiz';
 startbtnEl.textContent = 'Start Quiz now?';
 startbtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
-quiz.appendChild(startbtnEl);
+welcomeDiv.appendChild(startbtnEl);
 
 
 // Start timer countdown
@@ -91,6 +94,7 @@ var printBtnEl = function(questionIdCounter) {
     questions.innerHTML = ""
     questions.appendChild(question)
     
+    var questions = document.querySelector("#quiz")
     currentQuestion.choices.forEach(function(choice,i){
     var btn = document.createElement("button");
     btn.setAttribute("value", choice)
