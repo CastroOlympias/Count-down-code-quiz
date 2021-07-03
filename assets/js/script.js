@@ -11,8 +11,13 @@ var questionIdCounter = 0
 
 // html insertion of rules for challenge
 
-const welcomeDiv = document.getElementById('welcome')
-var body = document.body;
+const quizSection = document.getElementById('quiz')
+var welcomeDiv = document.createElement('div')
+welcomeDiv.id='welcome'
+quizSection.appendChild(welcomeDiv)
+
+welcomeDiv = document.getElementById('welcome')
+// var body = document.body;
 var welcomeMsg = document.createElement('h1');
 var gameRulesMsg = document.createElement('h2');
 welcomeMsg.textContent = 'Hello World!';
@@ -23,7 +28,7 @@ welcomeDiv.appendChild(welcomeMsg);
 
 gameRulesMsg.textContent =
   'Answer as many questions as possible while time still remains. Any wrong answer will decrease your time by 15 seconds. Good Luck!';
-  gameRulesMsg.setAttribute('style', 'margin:auto; width:60%; text-align:center;');
+//   gameRulesMsg.setAttribute('style', 'margin:auto; width:60%; text-align:center;');
   welcome.appendChild(gameRulesMsg);
 
 var startQuiz = document.create
@@ -32,7 +37,7 @@ var startQuiz = document.create
 var startbtnEl = document.createElement('button');
 startbtnEl.id = 'start-quiz';
 startbtnEl.textContent = 'Start Quiz now?';
-startbtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
+// startbtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
 welcomeDiv.appendChild(startbtnEl);
 
 
@@ -109,8 +114,8 @@ var printBtnEl = function(questionIdCounter) {
     
     startbtnEl.remove();
     // startBtn.remove();
-    welcome.remove();
-    gameRules.remove();
+    // welcomeDiv.remove();
+    // gameRulesMsg.remove();
 }
 
 var checkAnswer = function() {
@@ -119,7 +124,7 @@ var checkAnswer = function() {
         score ++;
         scoreEl.textContent = ' Your score is ' + score;
     } else {
-        //alert("youre are very wrong")
+        //alert("you are very wrong")
         timeLeft -= 15
     }
     index ++;
