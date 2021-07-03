@@ -1,7 +1,8 @@
+
 var timerEl = document.getElementById('time-left');
 var scoreEl = document.getElementById('high-score');
 var startBtn = document.getElementById('start-quiz');
-startBtn.setAttribute('style', 'font-size: 30px;','box-align: center;');
+// startBtn.setAttribute('style', 'font-size: 30px;','box-align: center;');
 var score = 0;
 
 var body = document.body;
@@ -11,23 +12,25 @@ var questionIdCounter = 0
 // html insertion of rules for challenge
 
 var body = document.body;
-var h1El = document.createElement('h1');
-h1El.textContent = 'Hello World!';
-h1El.setAttribute('style', 'margin:auto; width:50%; text-align:center;');
-body.appendChild(h1El);
-var h2El = document.createElement('h2');
-h2El.textContent =
+var welcome = document.createElement('h1');
+var gameRules = document.createElement('h2');
+welcome.textContent = 'Hello World!';
+welcome.setAttribute('style', 'margin:auto; width:50%; text-align:center;');
+quiz.appendChild(welcome);
+
+gameRules.textContent =
   'Answer as many questions as possible while time still remains. Any wrong answer will decrease your time by 15 seconds. Good Luck!';
-h2El.setAttribute('style', 'margin:auto; width:60%; text-align:center;');
-body.appendChild(h2El);
+  gameRules.setAttribute('style', 'margin:auto; width:60%; text-align:center;');
+quiz.appendChild(gameRules);
 
-// Start button, initiate countdown timer
+var startQuiz = document.create
 
+// Create dynamic start button Start button, initiate countdown timer
 var startbtnEl = document.createElement('button');
 startbtnEl.id = 'start-quiz';
 startbtnEl.textContent = 'Start Quiz now?';
 startbtnEl.setAttribute('style', 'font-size: 30px;','box-align: center;');
-//body.appendChild(startbtnEl);
+quiz.appendChild(startbtnEl);
 
 
 // Start timer countdown
@@ -61,7 +64,7 @@ var startQuiz = function(event) {
 
 };
 startbtnEl.onclick = startQuiz;
-startBtn.onclick = startQuiz;
+// startBtn.onclick = startQuiz;
 
 // After pressing start quiz button, begin the first round of muliple choice questions
 
@@ -80,12 +83,13 @@ var listBrand = [
 questionIdCounter++;
 
 var printBtnEl = function(questionIdCounter) {
+    
     var currentQuestion = listBrand[index]
-    var h2El = document.createElement("h2")
-    h2El.textContent = currentQuestion.q
-    var questionsDiv = document.querySelector(".questions")
-    questionsDiv.innerHTML = ""
-    questionsDiv.appendChild(h2El)
+    var question = document.createElement("h2")
+    question.textContent = currentQuestion.q
+    var questions = document.querySelector("#quiz")
+    questions.innerHTML = ""
+    questions.appendChild(question)
     
     currentQuestion.choices.forEach(function(choice,i){
     var btn = document.createElement("button");
@@ -95,13 +99,14 @@ var printBtnEl = function(questionIdCounter) {
     //var t = document.createElement("button");
     btn.textContent = choice
     //btn.appendChild(t);
-    questionsDiv.appendChild(btn);
+    questions.appendChild(btn);
     })
 
-  
-    startbtnEl.remove();
-    startBtn.remove();
     
+    startbtnEl.remove();
+    // startBtn.remove();
+    welcome.remove();
+    gameRules.remove();
 }
 
 var checkAnswer = function() {
