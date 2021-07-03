@@ -28,14 +28,32 @@ h1 {
     font-size: 40px;
 }
 
+#start-btn {
+    width: 250px;
+    font-size: 20px;;
+}
+
+#questions {
+    
+    font-size: 40px;;
+}
+
+#answers {
+    width: 250px;
+    font-size: 20px;;
+}
+
+
+
 #quiz {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     background: green;
     max-width: 60%;
     text-align: center;
     margin: auto;
+    align-items: center;
     margin-top: 200px;
 }
 /* .questions {
@@ -70,6 +88,6 @@ h1 {
 
 
 
-button {
-    width: 200px;
-}
+/* button {
+    width: 80px;
+} */
