@@ -43,6 +43,9 @@ h1 {
     font-size: 20px;;
 }
 
+.hide {
+    display: none;
+}
 
 
 #quiz {

@@ -2,6 +2,7 @@
 var timerEl = document.getElementById('time-left');
 var scoreEl = document.getElementById('high-score');
 var score = 0;
+console.log(score)
 
 var body = document.body;
 
@@ -97,6 +98,7 @@ var printBtnEl = function (questionIdCounter) {
         var answerQuestions = document.createElement('button');
         answerQuestions.id = 'answers'
         answerQuestions.setAttribute("value", choice)
+        answerQuestions.className = 'remove'
         answerQuestions.setAttribute("data-answer-id", questionIdCounter)
         answerQuestions.onclick = checkAnswer
         answerQuestions.textContent = choice
@@ -121,15 +123,38 @@ var checkAnswer = function () {
         timeLeft -= 15
     }
     index++;
-    printBtnEl()
+
+    // this ends the game based on last question
+    if(listBrand.length === index) {
+        endGame()
+    }
+    else {
+        printBtnEl()
+    }
+   
     console.log(score);
 }
 
 
 
 var endGame = function () {
+
     questions.remove();
+    timeLeft = 0;
     
+    
+
+
+    var remove = document.querySelectorAll('.remove')
+    console.log(remove)
+    // remove.classList.add('hide')
+
+    // remove.remove();
+
+    remove.forEach(function(button,i) {
+        console.log(button,i)
+        button.remove()
+    })
 
     const endOfGame = document.getElementById('quiz')
     const formInput = document.createElement('div')
@@ -166,10 +191,18 @@ var endGame = function () {
 var saveHighScore = function () {
  alert("Save your name and score into local storage, mkay?")
  var name = document.getElementById('nameInput').value;
- localStorage.setItem('name', JSON.stringify(name));
+ var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
+ var newHighScore = {
+     name: name,
+     yourScore: score
+ }
 
- var score = document.getElementById('high-score').value;
- localStorage.setItem('yourScore', JSON.stringify(score))
+ savedScore.push(newHighScore)
+ localStorage.setItem('highScores', JSON.stringify(savedScore));
+
+//  var score = document.getElementById('high-score').value;
+ console.log(score);
+//  localStorage.setItem('yourScore', JSON.stringify(score))
 }
 
 
