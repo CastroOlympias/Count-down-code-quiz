@@ -214,9 +214,6 @@ var saveHighScore = function () {
         name: name,
         yourScore: score
     }
-
-
-
     savedScore.push(newHighScore)
     localStorage.setItem('highScores', JSON.stringify(savedScore));
 
@@ -228,12 +225,60 @@ var saveHighScore = function () {
 
 var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
 console.log(savedScore)
+console.log(savedScore)
 
-var highScores = function () {
+var viewhighScores = function () {
     var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
-    alert('high scores')
     console.log(savedScore)
+    console.log(Object.values(savedScore))
+    var list = Object.values(savedScore)
+
+    const scoreSection = document.getElementById('quiz')
+    const highScoreDiv = document.createElement('div')
+    highScoreDiv.id = 'high-core-page'
+    scoreSection.appendChild(highScoreDiv)
+    
+    const displayScores = document.createElement('h1')
+    displayScores.id='high-score-msg'
+    displayScores.textContent = 'Recent Scores'
+    highScoreDiv.appendChild(displayScores)
 
 
+
+    for (var i = savedScore.length - 1; i >= 5; i--) {
+
+        console.log(savedScore[i])
+        list = document.createElement('li')
+        list.textContent = savedScore[i]
+        highScoreDiv.appendChild(list)
+
+    }
+
+    var scoreStartbtnEl = document.createElement('button');
+    scoreStartbtnEl.textContent = 'Start Quiz Now';
+    scoreStartbtnEl.id = 'start-btn'
+    highScoreDiv.appendChild(scoreStartbtnEl);
+
+    viewHighScoreBtnEl.remove()
+    welcomeMsg.remove()
+    gameRulesMsg.remove()
+    startbtnEl.remove()
+
+    scoreStartbtnEl.onclick = startQuiz;
 }
-viewHighScoreBtnEl.onclick = highScores;
+viewHighScoreBtnEl.onclick = viewhighScores;
+
+
+objArray = [{ foo: 1, bar: 2 }, { foo: 3, bar: 4 }, { foo: 5, bar: 6 }];
+
+function getFields(input, field) {
+    var output = [];
+    for (var i = 0; i < input.length; ++i)
+        output.push(input[i][field]);
+    return output;
+}
+
+var result = objArray.map(a => a.foo);
+
+
+console.log(result)
