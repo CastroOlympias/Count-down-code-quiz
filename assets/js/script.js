@@ -194,31 +194,30 @@ var saveHighScore = function () {
 var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
 // console.log(savedScore)
 
-var viewhighScores = function () {
-    var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
-    // this is an array/obect processing, to grab the last six name/score entries from storage, then create a ne warray that can only hold 6 array indexes before impiment function get the values from the objects.
-    var sixth = savedScore[savedScore.length - 6]
-    var fifth = savedScore[savedScore.length - 5]
-    var forth = savedScore[savedScore.length - 4]
-    var third = savedScore[savedScore.length - 3]
-    var second = savedScore[savedScore.length - 2]
-    var first = savedScore[savedScore.length - 1]
-    var allSix = [sixth, fifth, forth, third, second, first]
+const viewhighScores = function () {
+    const savedScore = JSON.parse(localStorage.getItem('highScores')) || []
+    // this is an array/object processing, to grab the last six name/score objects from local storage, then create a new array that can only hold 6 array indexes before implimenting a function to get the values from the objects. This is how the webpage was displaying the name/scores "[object Object]"
+    const sixth = savedScore[savedScore.length - 6]
+    const fifth = savedScore[savedScore.length - 5]
+    const forth = savedScore[savedScore.length - 4]
+    const third = savedScore[savedScore.length - 3]
+    const second = savedScore[savedScore.length - 2]
+    const first = savedScore[savedScore.length - 1]
+    const allSix = [sixth, fifth, forth, third, second, first]
     console.log(allSix)
     console.log(allSix[0])
 
     function getFields(input, field) {
-        var output = [];
-        for (var i=0; i < input.length ; ++i)
+        const output = [];
+        for (let i = 0; i < input.length; ++i)
             output.push(input[i][field]);
         return output;
     }
-    
+
     var playerName = getFields(allSix, "name",);
     var playerScore = getFields(allSix, "yourScore");
     console.log(playerName)
     console.log(playerScore)
-    
 
     const scoreSection = document.getElementById('quiz')
     const highScoreDiv = document.createElement('div')
@@ -230,43 +229,44 @@ var viewhighScores = function () {
     displayScores.textContent = '6 Most Recent Scores'
     highScoreDiv.appendChild(displayScores)
 
-
     // This is a manually one by one way to pull from the last positions of the array, this worked but not implemeneted in my weather app, which I can actually do with this method to limit the number of recent city searches, because the forloop doens't work to limit.
-    
+
     sixthList = document.createElement('li')
-    sixthList.textContent = `Player:${playerName[0]}, has a score of: ${playerScore[0]}`
+    sixthList.textContent = `Player: ${playerName[0]} has a score of: ${playerScore[0]}`
     highScoreDiv.appendChild(sixthList)
 
     fifthList = document.createElement('li')
-    fifthList.textContent = fifth
+    fifthList.textContent = `Player: ${playerName[1]} has a score of: ${playerScore[1]}`
     highScoreDiv.appendChild(fifthList)
 
     forthList = document.createElement('li')
-    forthList.textContent = forth
+    forthList.textContent = `Player: ${playerName[2]} has a score of: ${playerScore[2]}`
     highScoreDiv.appendChild(forthList)
-    
+
     thirdList = document.createElement('li')
-    thirdList.textContent = third
+    thirdList.textContent = `Player: ${playerName[3]} has a score of: ${playerScore[3]}`
     highScoreDiv.appendChild(thirdList)
-   
+
     secondList = document.createElement('li')
-    secondList.textContent = second
+    secondList.textContent = `Player: ${playerName[4]} has a score of: ${playerScore[4]}`
     highScoreDiv.appendChild(secondList)
- 
+
     firstList = document.createElement('li')
-    firstList.textContent = first
+    firstList.textContent = `Player: ${playerName[5]} has a score of: ${playerScore[5]}`
     highScoreDiv.appendChild(firstList)
 
-    // this for loop, like the weather app, attempts to list only the 5 most recente scores, but this doesn't do that, it lists all recent scores
+    // this for loop, like the weather app code I experimented with, works to list only the 6 most recent scores. This one works, exactly as the code from lines 234 to 256. I got the for loop to work with a template literl to display the player name and scores. the name matches up even in the forloop, I'm start with the playerName.length, it doesn't matter which array I use, it just needs to loop through one of them, the playerScore array loops with the playerName array. This is freakin sweet. I'm leaving uncommonted for my demonstration purposes that they perform the exact same way.
 
-    // for (var i = savedScore.length - 1; i >= 5; i--) {
+    for (var i = 0; i < playerName.length; i++) {
 
-    //     console.log(savedScore[i])
-    //     var list = document.createElement('li')
-    //     list.textContent = savedScore[i]
-    //     highScoreDiv.appendChild(list)
+        console.log(playerName[i])
+        var list = document.createElement('li')
+        list.textContent = `Player: ${playerName[i]} has a score of: ${playerScore[i]}`
+        highScoreDiv.appendChild(list)
 
-    // }
+
+
+    }
 
     var scoreStartbtnEl = document.createElement('button');
     scoreStartbtnEl.textContent = 'Start Quiz Now';
