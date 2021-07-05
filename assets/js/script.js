@@ -26,15 +26,20 @@ gameRulesMsg.textContent =
 welcome.appendChild(gameRulesMsg);
 
 var startbtnEl = document.createElement('button');
-startbtnEl.textContent = 'Start Quiz now?';
+startbtnEl.textContent = 'Start Quiz Now';
 startbtnEl.id = 'start-btn'
 welcomeDiv.appendChild(startbtnEl);
+
+var viewHighScoreBtnEl = document.createElement('button');
+viewHighScoreBtnEl.textContent = 'View High Score'
+viewHighScoreBtnEl.id = 'high-score'
+welcomeDiv.appendChild(viewHighScoreBtnEl)
 
 
 // Start timer countdown
 var timeLeft = 30
-var startQuiz = function (event) {
-    event.preventDefault();
+var startQuiz = function () {
+    // event.preventDefault();
 
 
     var timeInterval = setInterval(function () {
@@ -56,7 +61,7 @@ var startQuiz = function (event) {
             endGame();
         }
     }, 1000);
-    
+
 
     // Start button creation for first question
 
@@ -64,6 +69,7 @@ var startQuiz = function (event) {
 
 };
 startbtnEl.onclick = startQuiz;
+
 
 // After pressing start quiz button, begin the first round of muliple choice questions
 
@@ -76,6 +82,8 @@ var listBrand = [
     { q: 'How much wood could a wood chuck, chuck, if a wood chuck could chuck wood?', choices: ["16 cords", "24 cords", "32 cords", "40 cords", "48 cords"], a: '48 cords' },
 
 ];
+
+console.log(listBrand)
 var index = 0;
 //the array
 
@@ -105,7 +113,7 @@ var printBtnEl = function (questionIdCounter) {
         questions.appendChild(answerQuestions);
     })
 
-    
+
 
     startbtnEl.remove();
     welcomeDiv.remove();
@@ -125,13 +133,13 @@ var checkAnswer = function () {
     index++;
 
     // this ends the game based on last question
-    if(listBrand.length === index) {
+    if (listBrand.length === index) {
         endGame()
     }
     else {
         printBtnEl()
     }
-   
+
     console.log(score);
 }
 
@@ -141,8 +149,8 @@ var endGame = function () {
 
     questions.remove();
     timeLeft = 0;
-    
-    
+
+
 
 
     var remove = document.querySelectorAll('.remove')
@@ -151,8 +159,8 @@ var endGame = function () {
 
     // remove.remove();
 
-    remove.forEach(function(button,i) {
-        console.log(button,i)
+    remove.forEach(function (button, i) {
+        console.log(button, i)
         button.remove()
     })
 
@@ -184,25 +192,48 @@ var endGame = function () {
     input.appendChild(newGame)
 
     saveScore.onclick = saveHighScore;
-    newGame.onclick = startQuiz;
+    newGame.onclick = startNewGame
+}
+
+
+var startNewGame = function init() {
+    // alert('start new game')
+    timeLeft = 30
+    listBrand[listBrand.length = 0]
+
+    console.log(listBrand)
+    startQuiz(location.reload())
 }
 
 
 var saveHighScore = function () {
- alert("Save your name and score into local storage, mkay?")
- var name = document.getElementById('nameInput').value;
- var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
- var newHighScore = {
-     name: name,
-     yourScore: score
- }
+    alert("Save your name and score into local storage, mkay?")
+    var name = document.getElementById('nameInput').value;
+    var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
+    var newHighScore = {
+        name: name,
+        yourScore: score
+    }
 
- savedScore.push(newHighScore)
- localStorage.setItem('highScores', JSON.stringify(savedScore));
 
-//  var score = document.getElementById('high-score').value;
- console.log(score);
-//  localStorage.setItem('yourScore', JSON.stringify(score))
+
+    savedScore.push(newHighScore)
+    localStorage.setItem('highScores', JSON.stringify(savedScore));
+
+    //  var score = document.getElementById('high-score').value;
+    console.log(score);
+    //  localStorage.setItem('yourScore', JSON.stringify(score))
 }
 
 
+var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
+console.log(savedScore)
+
+var highScores = function () {
+    var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
+    alert('high scores')
+    console.log(savedScore)
+
+
+}
+viewHighScoreBtnEl.onclick = highScores;

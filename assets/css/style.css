@@ -33,6 +33,11 @@ h1 {
     font-size: 20px;;
 }
 
+#high-score {
+    width: 250px;
+    font-size: 20px;;
+}
+
 #questions {
     
     font-size: 40px;;
