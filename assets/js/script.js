@@ -204,21 +204,57 @@ var viewhighScores = function () {
 
     const displayScores = document.createElement('h1')
     displayScores.id = 'high-score-msg'
-    displayScores.textContent = 'Recent Scores'
+    displayScores.textContent = '6 Most Recent Scores'
     highScoreDiv.appendChild(displayScores)
 
 
+    // This is a manually one by one way to pull from the last positions of the array, this worked but not implemeneted in my weather app, which I can actually do with this method to limit the number of recent city searches, because the forloop doens't work to limit.
+    var sixth = savedScore[savedScore.length - 6]
+    sixthList = document.createElement('li')
+    sixthList.textContent = sixth
+    highScoreDiv.appendChild(sixthList)
+    console.log(sixth)
 
+    var fifth = savedScore[savedScore.length - 5]
+    fifthList = document.createElement('li')
+    fifthList.textContent = fifth
+    highScoreDiv.appendChild(fifthList)
+    console.log(fifth)
+
+    var forth = savedScore[savedScore.length - 4]
+    forthList = document.createElement('li')
+    forthList.textContent = forth
+    highScoreDiv.appendChild(forthList)
+    console.log(forth)
+
+    var third = savedScore[savedScore.length - 3]
+    thirdList = document.createElement('li')
+    thirdList.textContent = third
+    highScoreDiv.appendChild(thirdList)
+    console.log(third)
+
+    var second = savedScore[savedScore.length - 2]
+    secondList = document.createElement('li')
+    secondList.textContent = second
+    highScoreDiv.appendChild(secondList)
+    console.log(second)
+
+    var first = savedScore[savedScore.length - 1]
+    firstList = document.createElement('li')
+    firstList.textContent = first
+    highScoreDiv.appendChild(firstList)
+    console.log(first)
 
     // this for loop, like the weather app, attempts to list only the 5 most recente scores, but this doesn't do that, it lists all recent scores
-    for (var i = savedScore.length - 1; i >= 5; i--) {
 
-        console.log(savedScore[i])
-        list = document.createElement('li')
-        list.textContent = savedScore[i]
-        highScoreDiv.appendChild(list)
+    // for (var i = savedScore.length - 1; i >= 5; i--) {
 
-    }
+    //     console.log(savedScore[i])
+    //     var list = document.createElement('li')
+    //     list.textContent = savedScore[i]
+    //     highScoreDiv.appendChild(list)
+
+    // }
 
     var scoreStartbtnEl = document.createElement('button');
     scoreStartbtnEl.textContent = 'Start Quiz Now';
