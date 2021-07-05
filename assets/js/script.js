@@ -1,10 +1,6 @@
-
 var timerEl = document.getElementById('time-left');
 var scoreEl = document.getElementById('high-score');
 var score = 0;
-console.log(score)
-
-var body = document.body;
 
 var questionIdCounter = 0
 
@@ -35,8 +31,6 @@ viewHighScoreBtnEl.textContent = 'View High Score'
 viewHighScoreBtnEl.id = 'high-score'
 welcomeDiv.appendChild(viewHighScoreBtnEl)
 
-
-// Start timer countdown
 var timeLeft = 30
 var startQuiz = function () {
     // event.preventDefault();
@@ -62,18 +56,13 @@ var startQuiz = function () {
         }
     }, 1000);
 
-
-    // Start button creation for first question
-
     printBtnEl();
-
 };
+
+
 startbtnEl.onclick = startQuiz;
 
-
-// After pressing start quiz button, begin the first round of muliple choice questions
-
-var listBrand = [
+var theQuestions = [
     { q: 'What color is the sky?.', choices: ["Red", "Blue", "Brown", "Purple", "Orange"], a: 'Blue' },
     { q: 'What is the most dangerous animal in the world?.', choices: ["Black Cats", "Blue Dogs", "Giraffes", "Lion", "Tiny Great White Shark"], a: 'Blue Dogs' },
     { q: 'What is your Favorite number?.', choices: ["1", "0", "10", "7", "5"], a: '7' },
@@ -83,17 +72,15 @@ var listBrand = [
 
 ];
 
-console.log(listBrand)
+console.log(theQuestions)
 var index = 0;
-//the array
-
 
 questionIdCounter++;
 var printBtnEl = function (questionIdCounter) {
 
     var questions = document.getElementById('quiz')
 
-    var currentQuestion = listBrand[index]
+    var currentQuestion = theQuestions[index]
     var question = document.createElement("h2")
     question.id = 'questions'
     question.textContent = currentQuestion.q
@@ -113,36 +100,29 @@ var printBtnEl = function (questionIdCounter) {
         questions.appendChild(answerQuestions);
     })
 
-
-
     startbtnEl.remove();
     welcomeDiv.remove();
     gameRulesMsg.remove();
 }
 
 var checkAnswer = function () {
-    if (this.value === listBrand[index].a) {
-        // alert("this is correct")
+    if (this.value === theQuestions[index].a) {
         score++;
         scoreEl.textContent = ' Your score is ' + score;
     }
     else {
-        // alert("you are very wrong")
         timeLeft -= 15
     }
     index++;
-
-    // this ends the game based on last question
-    if (listBrand.length === index) {
+    if (theQuestions.length === index) {
         endGame()
     }
     else {
         printBtnEl()
     }
 
-    console.log(score);
+    // console.log(score);
 }
-
 
 
 var endGame = function () {
@@ -150,14 +130,8 @@ var endGame = function () {
     questions.remove();
     timeLeft = 0;
 
-
-
-
     var remove = document.querySelectorAll('.remove')
     console.log(remove)
-    // remove.classList.add('hide')
-
-    // remove.remove();
 
     remove.forEach(function (button, i) {
         console.log(button, i)
@@ -197,11 +171,8 @@ var endGame = function () {
 
 
 var startNewGame = function init() {
-    // alert('start new game')
     timeLeft = 30
-    listBrand[listBrand.length = 0]
-
-    console.log(listBrand)
+    console.log(theQuestions)
     startQuiz(location.reload())
 }
 
@@ -216,35 +187,30 @@ var saveHighScore = function () {
     }
     savedScore.push(newHighScore)
     localStorage.setItem('highScores', JSON.stringify(savedScore));
-
-    //  var score = document.getElementById('high-score').value;
-    console.log(score);
-    //  localStorage.setItem('yourScore', JSON.stringify(score))
+    // console.log(score);
 }
 
 
 var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
 console.log(savedScore)
-console.log(savedScore)
 
 var viewhighScores = function () {
     var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
-    console.log(savedScore)
-    console.log(Object.values(savedScore))
-    var list = Object.values(savedScore)
 
     const scoreSection = document.getElementById('quiz')
     const highScoreDiv = document.createElement('div')
     highScoreDiv.id = 'high-core-page'
     scoreSection.appendChild(highScoreDiv)
-    
+
     const displayScores = document.createElement('h1')
-    displayScores.id='high-score-msg'
+    displayScores.id = 'high-score-msg'
     displayScores.textContent = 'Recent Scores'
     highScoreDiv.appendChild(displayScores)
 
 
 
+
+    // this for loop, like the weather app, attempts to list only the 5 most recente scores, but this doesn't do that, it lists all recent scores
     for (var i = savedScore.length - 1; i >= 5; i--) {
 
         console.log(savedScore[i])
@@ -266,19 +232,5 @@ var viewhighScores = function () {
 
     scoreStartbtnEl.onclick = startQuiz;
 }
+
 viewHighScoreBtnEl.onclick = viewhighScores;
-
-
-objArray = [{ foo: 1, bar: 2 }, { foo: 3, bar: 4 }, { foo: 5, bar: 6 }];
-
-function getFields(input, field) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i)
-        output.push(input[i][field]);
-    return output;
-}
-
-var result = objArray.map(a => a.foo);
-
-
-console.log(result)
