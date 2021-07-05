@@ -31,7 +31,7 @@ viewHighScoreBtnEl.textContent = 'View High Score'
 viewHighScoreBtnEl.id = 'high-score'
 welcomeDiv.appendChild(viewHighScoreBtnEl)
 
-var timeLeft = 30
+var timeLeft = 90
 var startQuiz = function () {
     // event.preventDefault();
 
@@ -192,10 +192,33 @@ var saveHighScore = function () {
 
 
 var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
-console.log(savedScore)
+// console.log(savedScore)
 
 var viewhighScores = function () {
     var savedScore = JSON.parse(localStorage.getItem('highScores')) || []
+    // this is an array/obect processing, to grab the last six name/score entries from storage, then create a ne warray that can only hold 6 array indexes before impiment function get the values from the objects.
+    var sixth = savedScore[savedScore.length - 6]
+    var fifth = savedScore[savedScore.length - 5]
+    var forth = savedScore[savedScore.length - 4]
+    var third = savedScore[savedScore.length - 3]
+    var second = savedScore[savedScore.length - 2]
+    var first = savedScore[savedScore.length - 1]
+    var allSix = [sixth, fifth, forth, third, second, first]
+    console.log(allSix)
+    console.log(allSix[0])
+
+    function getFields(input, field) {
+        var output = [];
+        for (var i=0; i < input.length ; ++i)
+            output.push(input[i][field]);
+        return output;
+    }
+    
+    var playerName = getFields(allSix, "name",);
+    var playerScore = getFields(allSix, "yourScore");
+    console.log(playerName)
+    console.log(playerScore)
+    
 
     const scoreSection = document.getElementById('quiz')
     const highScoreDiv = document.createElement('div')
@@ -209,41 +232,30 @@ var viewhighScores = function () {
 
 
     // This is a manually one by one way to pull from the last positions of the array, this worked but not implemeneted in my weather app, which I can actually do with this method to limit the number of recent city searches, because the forloop doens't work to limit.
-    var sixth = savedScore[savedScore.length - 6]
+    
     sixthList = document.createElement('li')
-    sixthList.textContent = sixth
+    sixthList.textContent = `Player:${playerName[0]}, has a score of: ${playerScore[0]}`
     highScoreDiv.appendChild(sixthList)
-    console.log(sixth)
 
-    var fifth = savedScore[savedScore.length - 5]
     fifthList = document.createElement('li')
     fifthList.textContent = fifth
     highScoreDiv.appendChild(fifthList)
-    console.log(fifth)
 
-    var forth = savedScore[savedScore.length - 4]
     forthList = document.createElement('li')
     forthList.textContent = forth
     highScoreDiv.appendChild(forthList)
-    console.log(forth)
-
-    var third = savedScore[savedScore.length - 3]
+    
     thirdList = document.createElement('li')
     thirdList.textContent = third
     highScoreDiv.appendChild(thirdList)
-    console.log(third)
-
-    var second = savedScore[savedScore.length - 2]
+   
     secondList = document.createElement('li')
     secondList.textContent = second
     highScoreDiv.appendChild(secondList)
-    console.log(second)
-
-    var first = savedScore[savedScore.length - 1]
+ 
     firstList = document.createElement('li')
     firstList.textContent = first
     highScoreDiv.appendChild(firstList)
-    console.log(first)
 
     // this for loop, like the weather app, attempts to list only the 5 most recente scores, but this doesn't do that, it lists all recent scores
 
@@ -270,3 +282,22 @@ var viewhighScores = function () {
 }
 
 viewHighScoreBtnEl.onclick = viewhighScores;
+
+
+
+
+
+// objArray = [ { foo: 1, bar: 2}, { foo: 3, bar: 4}, { foo: 5, bar: 6} ];
+
+
+// function getFields(input, field) {
+//     var output = [];
+//     for (var i=0; i < input.length ; ++i)
+//         output.push(input[i][field]);
+//     return output;
+// }
+
+// var result1 = getFields(objArray, "foo", "bar"); // returns [ 1, 3, 5 ]
+// var result2 = getFields(objArray, "bar"); // returns [ 1, 3, 5 ]
+// console.log(result1)
+// console.log(result2)
