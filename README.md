@@ -8,11 +8,7 @@ Having some time off these week I figured I would refactor and complete this cha
 <a href="https://castroolympias.github.io/Count-down-code-quiz/"> Git Hub Link to refactored coun-tdown quiz </a>
 
 This is my refactor with new knowledge implemented 
-<img src="https://github.com/CastroOlympias/Count-down-code-quiz/blob/main/media/Refactor.giff"/>
-
-This is the original work from about week 5 <a href="https://castroolympias-secret-show.herokuapp.com/">Original</a> , let the music begin!
-
-
+<img src="https://github.com/CastroOlympias/Count-down-code-quiz/blob/main/media/Refactor.gif"/>
 
 ## Table of Contents
 - [Story](#Story)
