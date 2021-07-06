@@ -18,7 +18,7 @@ gameRulesMsg.id = 'game-rules'
 welcomeDiv.appendChild(welcomeMsg);
 
 gameRulesMsg.textContent =
-    'Answer as many questions as possible while time still remains. Any wrong answer will decrease your time by 15 seconds. Good Luck!';
+    'Answer as many questions as possible while time still remains. Any wrong answer will decrease your time by 90 seconds. Good Luck!';
 welcome.appendChild(gameRulesMsg);
 
 var startbtnEl = document.createElement('button');
@@ -177,7 +177,6 @@ var endGame = function () {
 
 
 var startNewGame = function init() {
-    timeLeft = 30
     console.log(theQuestions)
     startQuiz(location.reload())
 }
@@ -290,7 +289,7 @@ const viewhighScores = function () {
     highScoreDiv.appendChild(scoreStartbtnEl);
 
     scoreStartbtnEl.onclick = startNewGame;
-    
+
     viewHighScoreBtnEl.remove()
     welcomeMsg.remove()
     gameRulesMsg.remove()
