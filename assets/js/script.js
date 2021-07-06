@@ -33,8 +33,6 @@ welcomeDiv.appendChild(viewHighScoreBtnEl)
 
 var timeLeft = 90
 var startQuiz = function () {
-    // event.preventDefault();
-
 
     var timeInterval = setInterval(function () {
         timeLeft--;
@@ -55,7 +53,6 @@ var startQuiz = function () {
             endGame();
         }
     }, 1000);
-
     printBtnEl();
 };
 
@@ -99,7 +96,6 @@ var printBtnEl = function (questionIdCounter) {
         answerQuestions.textContent = choice
         questions.appendChild(answerQuestions);
     })
-
     startbtnEl.remove();
     welcomeDiv.remove();
     gameRulesMsg.remove();
@@ -120,8 +116,6 @@ var checkAnswer = function () {
     else {
         printBtnEl()
     }
-
-    // console.log(score);
 }
 
 
@@ -144,7 +138,7 @@ var endGame = function () {
     endOfGame.appendChild(formInput)
     const input = document.getElementById('formInput')
 
-    const enterNameHere = document.createElement('h3')
+    const enterNameHere = document.createElement('h2')
     enterNameHere.id = 'enterNameHere'
     enterNameHere.textContent = 'Enter your name and save your score'
     input.appendChild(enterNameHere)
@@ -213,13 +207,12 @@ const viewhighScores = function () {
 
     // I just recalled the method of splitting an array from and index position from a 2 minute playing with code from a month ago or so, just googled and found an easier way of split into a new array only container 6 indexes, it's less code than above. This and my template literal for loops will cut down a lot of this code. but I'm gonna leave it for my learning purposes.
 
-    // this was found online, and then eureka
-    recentSix = savedScore.splice(-6)
+    // this was found online, and then eureka, a much better arrayer splicer than the above, sixth, fifth etc, index position.
+    recentSix = savedScore.splice(-10)
     console.log(recentSix)
     // x = ["a", "b", "c", "d", "e", "f", "g"];
     // y = x.splice(3);
-    // console.log(x); // ["a", "b", "c"]
-    // console.log(y); // ["d", "e", "f", "g"]
+    // console.log(x);
 
     function getFields(input, field) {
         const output = [];
@@ -243,8 +236,8 @@ const viewhighScores = function () {
     scoreSection.appendChild(highScoreDiv)
 
     const displayScores = document.createElement('h1')
-    displayScores.id = 'high-score-msg'
-    displayScores.textContent = '6 Most Recent Scores'
+    // displayScores.id = 'high-score-msg'
+    displayScores.textContent = '10 Most Recent Scores'
     highScoreDiv.appendChild(displayScores)
 
     // This is a manually one by one way to pull from the last positions of the array, this worked but not implemeneted in my weather app, which I can actually do with this method to limit the number of recent city searches, because the forloop doens't work to limit.
@@ -273,13 +266,13 @@ const viewhighScores = function () {
     // firstList.textContent = `Player: ${playerName[5]} has a score of: ${playerScore[5]}`
     // highScoreDiv.appendChild(firstList)
 
-    // this for loop, like the weather app code I experimented with, works to list only the 6 most recent scores. This one works, exactly as the code from lines 234 to 256. I got the for loop to work with a template literl to display the player name and scores. the name matches up even in the forloop, I'm start with the playerName.length, it doesn't matter which array I use, it just needs to loop through one of them, the playerScore array loops with the playerName array. This is freakin sweet. I'm leaving uncommonted for my demonstration purposes that they perform the exact same way.
+    // this for loop, like the weather app code I experimented with, works to list only the 6 most recent scores. This one works, exactly as the code from lines 234 to 256. I got the for loop to work with a template literl to display the player name and scores. the name matches up in the forloop with the player score. The playerScore array loops with the playerName array. This is freakin sweet. I'm leaving uncommonted for my demonstration purposes that they perform the exact same way. but the for loop is mutch less coding and much more practical which doesn't require more code should I choise to increas the size of the array.
 
     for (var i = 0; i < playerName.length; i++) {
 
         console.log(playerName[i])
         var list = document.createElement('li')
-        list.textContent = `Player: ${playerName[i]} has a score of: ${playerScore[i]}`
+        list.textContent = `${playerName[i]} Score ${playerScore[i]}`
         highScoreDiv.appendChild(list)
     }
 
@@ -301,7 +294,7 @@ viewHighScoreBtnEl.onclick = viewhighScores;
 
 
 
-// found these online and played and lerned to use them
+// found these online and played and lerned to use them to get the values from the objects in the array, to display those values on page instead of displaying [object Object] on the page.
 
 // objArray = [ { foo: 1, bar: 2}, { foo: 3, bar: 4}, { foo: 5, bar: 6} ];
 
