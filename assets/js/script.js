@@ -272,7 +272,7 @@ const viewhighScores = function () {
 
         console.log(playerName[i])
         var list = document.createElement('li')
-        list.textContent = `${playerName[i]} Score ${playerScore[i]}`
+        list.textContent = `${playerName[i]}'s Score is ${playerScore[i]}`
         highScoreDiv.appendChild(list)
     }
 
