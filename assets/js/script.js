@@ -146,7 +146,7 @@ var endGame = function () {
 
     const enterNameHere = document.createElement('h3')
     enterNameHere.id = 'enterNameHere'
-    enterNameHere.textContent = 'Enter you name and save your score'
+    enterNameHere.textContent = 'Enter your name and save your score'
     input.appendChild(enterNameHere)
 
     const nameInput = document.createElement('input')
@@ -165,8 +165,14 @@ var endGame = function () {
     newGame.textContent = "Start a new game?"
     input.appendChild(newGame)
 
+    var viewHighScoreBtnEl = document.createElement('button');
+    viewHighScoreBtnEl.textContent = 'View High Score'
+    viewHighScoreBtnEl.id = 'high-score'
+    input.appendChild(viewHighScoreBtnEl)
+
     saveScore.onclick = saveHighScore;
-    newGame.onclick = startNewGame
+    newGame.onclick = startNewGame;
+    viewHighScoreBtnEl.onclick = viewhighScores;
 }
 
 
@@ -215,7 +221,7 @@ const viewhighScores = function () {
     // y = x.splice(3);
     // console.log(x); // ["a", "b", "c"]
     // console.log(y); // ["d", "e", "f", "g"]
-    
+
     function getFields(input, field) {
         const output = [];
         for (let i = 0; i < input.length; ++i)
@@ -225,7 +231,7 @@ const viewhighScores = function () {
 
     // var playerName = getFields(allSix, "name",);
     // var playerScore = getFields(allSix, "yourScore");
-    
+
     var playerName = getFields(recentSix, "name",);
     var playerScore = getFields(recentSix, "yourScore");
 
@@ -283,12 +289,13 @@ const viewhighScores = function () {
     scoreStartbtnEl.id = 'start-btn'
     highScoreDiv.appendChild(scoreStartbtnEl);
 
+    scoreStartbtnEl.onclick = startNewGame;
+    
     viewHighScoreBtnEl.remove()
     welcomeMsg.remove()
     gameRulesMsg.remove()
     startbtnEl.remove()
-
-    scoreStartbtnEl.onclick = startQuiz;
+    formInput.remove()
 }
 
 viewHighScoreBtnEl.onclick = viewhighScores;
@@ -308,7 +315,7 @@ viewHighScoreBtnEl.onclick = viewhighScores;
 // }
 
 // var result1 = getFields(objArray, "foo", "bar"); // returns [ 1, 3, 5 ]
-// var result2 = getFields(objArray, "bar"); // returns [ 1, 3, 5 ]
+// var result2 = getFields(objArray, "bar"); // returns [ 2, 4, 6 ]
 // console.log(result1)
 // console.log(result2)
 
