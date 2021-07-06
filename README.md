@@ -8,9 +8,9 @@ Having some time off these week I figured I would refactor and complete this cha
 <a href="https://castroolympias.github.io/Count-down-code-quiz/"> Git Hub Link to refactored coun-tdown quiz </a>
 
 This is my refactor with new knowledge implemented 
-<img src="https://github.com/CastroOlympias/Count-down-code-quiz/blob/main/media/Refactor.giff"/>
+<img src="https://github.com/CastroOlympias/Count-down-code-quiz/blob/main/media/Refactor.gif"/>
 
-This is the original work from about week 5 <a href="https://github.com/CastroOlympias/Count-down-code-quiz/blob/main/media/screenshot.png">Original</a>
+This is the original work from about week 5 <img src="https://github.com/CastroOlympias/Count-down-code-quiz/blob/main/media/screenshot.png"/>
 
 
 
