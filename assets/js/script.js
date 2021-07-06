@@ -156,7 +156,7 @@ var endGame = function () {
     const newGame = document.createElement('button')
     newGame.id = 'newGame'
     newGame.type = 'submit'
-    newGame.textContent = "Start a new game?"
+    newGame.textContent = "Back to Start Screen"
     input.appendChild(newGame)
 
     var viewHighScoreBtnEl = document.createElement('button');
@@ -172,7 +172,7 @@ var endGame = function () {
 
 var startNewGame = function init() {
     console.log(theQuestions)
-    startQuiz(location.reload())
+    location.reload()
 }
 
 
@@ -277,7 +277,7 @@ const viewhighScores = function () {
     }
 
     var scoreStartbtnEl = document.createElement('button');
-    scoreStartbtnEl.textContent = 'Start Quiz Now';
+    scoreStartbtnEl.textContent = 'Back to Start Screen';
     scoreStartbtnEl.id = 'start-btn'
     highScoreDiv.appendChild(scoreStartbtnEl);
 
